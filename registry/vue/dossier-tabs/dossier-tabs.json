@@ -1,0 +1,121 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dossier-tabs",
+  "type": "registry:ui",
+  "title": "Dossier Tabs",
+  "description": "Tactile, orientation-aware dossier/index tabs for Vue.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "DossierIndex.vue",
+      "type": "registry:ui",
+      "target": "components/ui/dossier-tabs/DossierIndex.vue"
+    },
+    {
+      "path": "DossierFile.vue",
+      "type": "registry:ui",
+      "target": "components/ui/dossier-tabs/DossierFile.vue"
+    },
+    {
+      "path": "DossierTray.vue",
+      "type": "registry:ui",
+      "target": "components/ui/dossier-tabs/DossierTray.vue"
+    },
+    {
+      "path": "DossierStack.vue",
+      "type": "registry:ui",
+      "target": "components/ui/dossier-tabs/DossierStack.vue"
+    },
+    {
+      "path": "DossierFileStack.vue",
+      "type": "registry:ui",
+      "target": "components/ui/dossier-tabs/DossierFileStack.vue"
+    },
+    {
+      "path": "dossierTabs.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/dossierTabs.ts"
+    },
+    {
+      "path": "paperTextures.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/paperTextures.ts"
+    },
+    {
+      "path": "dossierGeometry.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/dossierGeometry.ts"
+    },
+    {
+      "path": "useDossierPullMachine.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/useDossierPullMachine.ts"
+    },
+    {
+      "path": "useDossierIndexList.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/useDossierIndexList.ts"
+    },
+    {
+      "path": "dossier-tabs.css",
+      "type": "registry:style",
+      "target": "components/ui/dossier-tabs/dossier-tabs.css"
+    },
+    {
+      "path": "css.d.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/css.d.ts"
+    },
+    {
+      "path": "index.ts",
+      "type": "registry:lib",
+      "target": "components/ui/dossier-tabs/index.ts"
+    },
+    {
+      "path": "assets/paper/paper-watercolor-rough.jpg",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/paper-watercolor-rough.jpg"
+    },
+    {
+      "path": "assets/paper/03-fibrous-cotton-rag-hybrid-strong-2048-tile.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/03-fibrous-cotton-rag-hybrid-strong-2048-tile.png"
+    },
+    {
+      "path": "assets/paper/03-fibrous-cotton-rag-hybrid-strong-2048-repeat-3x3.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/03-fibrous-cotton-rag-hybrid-strong-2048-repeat-3x3.png"
+    },
+    {
+      "path": "assets/paper/03-fibrous-cotton-rag-hybrid-strong-512-density4-tile.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/03-fibrous-cotton-rag-hybrid-strong-512-density4-tile.png"
+    },
+    {
+      "path": "assets/paper/03-fibrous-cotton-rag-hybrid-strong-228-density9-tile.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/03-fibrous-cotton-rag-hybrid-strong-228-density9-tile.png"
+    },
+    {
+      "path": "assets/paper/05-creamy-fine-tooth-hybrid-strong-2048-tile.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/05-creamy-fine-tooth-hybrid-strong-2048-tile.png"
+    },
+    {
+      "path": "assets/paper/05-creamy-fine-tooth-hybrid-strong-2048-repeat-3x3.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/05-creamy-fine-tooth-hybrid-strong-2048-repeat-3x3.png"
+    },
+    {
+      "path": "assets/paper/05-creamy-fine-tooth-hybrid-strong-512-density4-tile.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/05-creamy-fine-tooth-hybrid-strong-512-density4-tile.png"
+    },
+    {
+      "path": "assets/paper/05-creamy-fine-tooth-hybrid-strong-228-density9-tile.png",
+      "type": "registry:file",
+      "target": "components/ui/dossier-tabs/assets/paper/05-creamy-fine-tooth-hybrid-strong-228-density9-tile.png"
+    }
+  ]
+}

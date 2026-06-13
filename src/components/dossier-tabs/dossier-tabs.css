@@ -1,0 +1,2187 @@
+.dossier-tabs,
+.dossier-tray,
+.dossier-file-stack,
+.dossier-stack,
+.dossier {
+  --dossier-ink-light: #fff8ec;
+  --dossier-ink-light-muted: rgba(247, 241, 231, 0.68);
+  --dossier-ink-dark: #1d211c;
+  --dossier-ink-dark-muted: rgba(29, 33, 28, 0.68);
+  --dossier-ink: var(--dossier-ink-light);
+  --dossier-ink-muted: var(--dossier-ink-light-muted);
+  --dossier-paper-texture-default:
+    radial-gradient(circle at 0.82rem 1.1rem, rgba(255, 250, 232, 0.2) 0 0.045rem, transparent 0.055rem),
+    radial-gradient(circle at 2.7rem 0.5rem, rgba(20, 16, 12, 0.14) 0 0.035rem, transparent 0.052rem),
+    repeating-linear-gradient(8deg, rgba(255, 250, 232, 0.052) 0 0.06rem, transparent 0.06rem 0.56rem),
+    repeating-linear-gradient(96deg, rgba(20, 16, 12, 0.04) 0 0.045rem, transparent 0.045rem 0.72rem),
+    linear-gradient(135deg, rgba(255, 250, 232, 0.08), rgba(20, 16, 12, 0.04));
+  --dossier-paper-texture-size-default:
+    4.6rem 3.8rem,
+    3.35rem 3.05rem,
+    100% 0.72rem,
+    0.72rem 100%,
+    auto;
+  --dossier-paper-blend-mode-default: soft-light;
+  --dossier-paper-composite-mode-default: normal;
+  --dossier-paper-composite-mode: var(--dossier-paper-composite-mode-custom, var(--dossier-paper-composite-mode-default));
+  --dossier-paper-filter: var(--dossier-paper-filter-custom, none);
+  --dossier-paper-texture: var(--dossier-paper-texture-custom, var(--dossier-paper-texture-default));
+  --dossier-paper-texture-size: var(--dossier-paper-texture-size-custom, var(--dossier-paper-texture-size-default));
+  --dossier-paper-sheet-opacity: 0;
+  --dossier-paper-content-opacity: 0;
+  --dossier-paper-tab-opacity: 0;
+  --dossier-paper-blend-mode: var(--dossier-paper-blend-mode-custom, var(--dossier-paper-blend-mode-default));
+}
+
+:is(
+  .dossier-tabs--text-color-light,
+  .dossier-tray--text-color-light,
+  .dossier-file-stack--text-color-light,
+  .dossier-stack--text-color-light,
+  .dossier--text-color-light
+) {
+  --dossier-ink: var(--dossier-ink-light);
+  --dossier-ink-muted: var(--dossier-ink-light-muted);
+}
+
+:is(
+  .dossier-tabs--text-color-dark,
+  .dossier-tray--text-color-dark,
+  .dossier-file-stack--text-color-dark,
+  .dossier-stack--text-color-dark,
+  .dossier--text-color-dark
+) {
+  --dossier-ink: var(--dossier-ink-dark);
+  --dossier-ink-muted: var(--dossier-ink-dark-muted);
+}
+
+:is(
+  .dossier-tabs--text-color-inherit,
+  .dossier-tray--text-color-inherit,
+  .dossier-file-stack--text-color-inherit,
+  .dossier-stack--text-color-inherit,
+  .dossier--text-color-inherit
+) {
+  --dossier-ink: inherit;
+  --dossier-ink-muted: inherit;
+}
+
+:is(
+  .dossier-tabs--text-color-auto,
+  .dossier-tray--text-color-auto,
+  .dossier-file-stack--text-color-auto,
+  .dossier-stack--text-color-auto,
+  .dossier--text-color-auto
+):is(
+  .dossier-tabs--texture-paper,
+  .dossier-tray--texture-paper,
+  .dossier-file-stack--texture-paper,
+  .dossier-stack--texture-paper,
+  .dossier--texture-paper
+):is(
+  .dossier-tabs--texture-blend-normal,
+  .dossier-tray--texture-blend-normal,
+  .dossier-file-stack--texture-blend-normal,
+  .dossier-stack--texture-blend-normal,
+  .dossier--texture-blend-normal,
+  .dossier-tabs--texture-blend-screen,
+  .dossier-tray--texture-blend-screen,
+  .dossier-file-stack--texture-blend-screen,
+  .dossier-stack--texture-blend-screen,
+  .dossier--texture-blend-screen,
+  .dossier-tabs--texture-blend-lighten,
+  .dossier-tray--texture-blend-lighten,
+  .dossier-file-stack--texture-blend-lighten,
+  .dossier-stack--texture-blend-lighten,
+  .dossier--texture-blend-lighten,
+  .dossier-tabs--texture-blend-color-dodge,
+  .dossier-tray--texture-blend-color-dodge,
+  .dossier-file-stack--texture-blend-color-dodge,
+  .dossier-stack--texture-blend-color-dodge,
+  .dossier--texture-blend-color-dodge
+) {
+  --dossier-ink: var(--dossier-ink-dark);
+  --dossier-ink-muted: var(--dossier-ink-dark-muted);
+}
+
+:is(
+  .dossier-tabs--texture-blend-normal,
+  .dossier-tray--texture-blend-normal,
+  .dossier-file-stack--texture-blend-normal,
+  .dossier--texture-blend-normal,
+  .dossier-stack--texture-blend-normal
+) {
+  --dossier-paper-blend-mode-default: normal;
+  --dossier-paper-composite-mode-default: normal;
+}
+
+:is(
+  .dossier-tabs--texture-blend-multiply,
+  .dossier-tray--texture-blend-multiply,
+  .dossier-file-stack--texture-blend-multiply,
+  .dossier--texture-blend-multiply,
+  .dossier-stack--texture-blend-multiply
+) {
+  --dossier-paper-blend-mode-default: multiply;
+  --dossier-paper-composite-mode-default: multiply;
+}
+
+:is(
+  .dossier-tabs--texture-blend-screen,
+  .dossier-tray--texture-blend-screen,
+  .dossier-file-stack--texture-blend-screen,
+  .dossier--texture-blend-screen,
+  .dossier-stack--texture-blend-screen
+) {
+  --dossier-paper-blend-mode-default: screen;
+  --dossier-paper-composite-mode-default: screen;
+}
+
+:is(
+  .dossier-tabs--texture-blend-overlay,
+  .dossier-tray--texture-blend-overlay,
+  .dossier-file-stack--texture-blend-overlay,
+  .dossier--texture-blend-overlay,
+  .dossier-stack--texture-blend-overlay
+) {
+  --dossier-paper-blend-mode-default: overlay;
+  --dossier-paper-composite-mode-default: overlay;
+}
+
+:is(
+  .dossier-tabs--texture-blend-darken,
+  .dossier-tray--texture-blend-darken,
+  .dossier-file-stack--texture-blend-darken,
+  .dossier--texture-blend-darken,
+  .dossier-stack--texture-blend-darken
+) {
+  --dossier-paper-blend-mode-default: darken;
+  --dossier-paper-composite-mode-default: darken;
+}
+
+:is(
+  .dossier-tabs--texture-blend-lighten,
+  .dossier-tray--texture-blend-lighten,
+  .dossier-file-stack--texture-blend-lighten,
+  .dossier--texture-blend-lighten,
+  .dossier-stack--texture-blend-lighten
+) {
+  --dossier-paper-blend-mode-default: lighten;
+  --dossier-paper-composite-mode-default: lighten;
+}
+
+:is(
+  .dossier-tabs--texture-blend-color-dodge,
+  .dossier-tray--texture-blend-color-dodge,
+  .dossier-file-stack--texture-blend-color-dodge,
+  .dossier--texture-blend-color-dodge,
+  .dossier-stack--texture-blend-color-dodge
+) {
+  --dossier-paper-blend-mode-default: color-dodge;
+  --dossier-paper-composite-mode-default: color-dodge;
+}
+
+:is(
+  .dossier-tabs--texture-blend-color-burn,
+  .dossier-tray--texture-blend-color-burn,
+  .dossier-file-stack--texture-blend-color-burn,
+  .dossier--texture-blend-color-burn,
+  .dossier-stack--texture-blend-color-burn
+) {
+  --dossier-paper-blend-mode-default: color-burn;
+  --dossier-paper-composite-mode-default: color-burn;
+}
+
+:is(
+  .dossier-tabs--texture-blend-hard-light,
+  .dossier-tray--texture-blend-hard-light,
+  .dossier-file-stack--texture-blend-hard-light,
+  .dossier--texture-blend-hard-light,
+  .dossier-stack--texture-blend-hard-light
+) {
+  --dossier-paper-blend-mode-default: hard-light;
+  --dossier-paper-composite-mode-default: hard-light;
+}
+
+:is(
+  .dossier-tabs--texture-blend-soft-light,
+  .dossier-tray--texture-blend-soft-light,
+  .dossier-file-stack--texture-blend-soft-light,
+  .dossier--texture-blend-soft-light,
+  .dossier-stack--texture-blend-soft-light
+) {
+  --dossier-paper-blend-mode-default: soft-light;
+  --dossier-paper-composite-mode-default: soft-light;
+}
+
+:is(
+  .dossier-tabs--texture-blend-difference,
+  .dossier-tray--texture-blend-difference,
+  .dossier-file-stack--texture-blend-difference,
+  .dossier--texture-blend-difference,
+  .dossier-stack--texture-blend-difference
+) {
+  --dossier-paper-blend-mode-default: difference;
+  --dossier-paper-composite-mode-default: difference;
+}
+
+:is(
+  .dossier-tabs--texture-blend-exclusion,
+  .dossier-tray--texture-blend-exclusion,
+  .dossier-file-stack--texture-blend-exclusion,
+  .dossier--texture-blend-exclusion,
+  .dossier-stack--texture-blend-exclusion
+) {
+  --dossier-paper-blend-mode-default: exclusion;
+  --dossier-paper-composite-mode-default: exclusion;
+}
+
+:is(
+  .dossier-tabs--texture-blend-hue,
+  .dossier-tray--texture-blend-hue,
+  .dossier-file-stack--texture-blend-hue,
+  .dossier--texture-blend-hue,
+  .dossier-stack--texture-blend-hue
+) {
+  --dossier-paper-blend-mode-default: hue;
+  --dossier-paper-composite-mode-default: hue;
+}
+
+:is(
+  .dossier-tabs--texture-blend-saturation,
+  .dossier-tray--texture-blend-saturation,
+  .dossier-file-stack--texture-blend-saturation,
+  .dossier--texture-blend-saturation,
+  .dossier-stack--texture-blend-saturation
+) {
+  --dossier-paper-blend-mode-default: saturation;
+  --dossier-paper-composite-mode-default: saturation;
+}
+
+:is(
+  .dossier-tabs--texture-blend-color,
+  .dossier-tray--texture-blend-color,
+  .dossier-file-stack--texture-blend-color,
+  .dossier--texture-blend-color,
+  .dossier-stack--texture-blend-color
+) {
+  --dossier-paper-blend-mode-default: color;
+  --dossier-paper-composite-mode-default: color;
+}
+
+:is(
+  .dossier-tabs--texture-blend-luminosity,
+  .dossier-tray--texture-blend-luminosity,
+  .dossier-file-stack--texture-blend-luminosity,
+  .dossier--texture-blend-luminosity,
+  .dossier-stack--texture-blend-luminosity
+) {
+  --dossier-paper-blend-mode-default: luminosity;
+  --dossier-paper-composite-mode-default: luminosity;
+}
+
+.dossier-tabs {
+  --dt-size: 2.75rem;
+  --dt-min-block-size: 2.75rem;
+  --dt-label-size: 0.9375rem;
+  --dt-label-max: var(--dossier-index-label-size, 88px);
+  --dt-count-max: var(--dossier-index-count-size, 0px);
+  --dt-lock-max: var(--dossier-index-lock-size, 0rem);
+  --dt-radius: 0.5rem;
+  --dt-gap: 0.25rem;
+  --dt-padding: 0.5rem;
+  --dt-text: var(--dossier-ink);
+  --dt-muted: var(--dossier-ink-muted);
+  --dt-border: #45433d;
+  --dt-border-active: #79756c;
+  --dt-surface: #20201e;
+  --dt-surface-active: #292824;
+  --dt-rail: #46443d;
+  --dt-shadow: 0 1.2rem 2.8rem rgba(0, 0, 0, 0.2);
+  --dt-focus: #d7ff63;
+  --dt-lift: -0.16rem;
+  --dt-hover-lift: -0.06rem;
+  --dt-press-lift: -0.1rem;
+  --dt-label-rotation: -90deg;
+  --dt-stack-room: 1.1rem;
+  --dt-dossier-pull-distance: 0.34rem;
+  --dossier-motion-duration: 420ms;
+  --dossier-motion-ease: cubic-bezier(0.32, 0, 0.2, 1);
+
+  display: flex;
+  isolation: isolate;
+  scrollbar-width: none;
+  color: var(--dt-text);
+}
+
+.dossier-tabs--texture-paper {
+  --dossier-paper-tab-opacity: var(--dossier-paper-tab-opacity-custom, 0.5);
+}
+
+.dossier-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.dossier-tabs--edge-left {
+  --dt-label-rotation: -90deg;
+}
+
+.dossier-tabs--edge-right {
+  --dt-label-rotation: 90deg;
+  --dt-lift: 0.16rem;
+  --dt-hover-lift: 0.06rem;
+  --dt-press-lift: 0.1rem;
+}
+
+.dossier-tabs--horizontal {
+  flex-direction: row;
+  align-items: flex-end;
+  gap: var(--dt-gap);
+  min-block-size: calc(var(--dt-min-block-size) + var(--dt-padding));
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-block-start: var(--dt-padding);
+}
+
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom {
+  align-items: flex-start;
+  padding-block-start: 0;
+  padding-block-end: var(--dt-padding);
+}
+
+.dossier-tabs--vertical {
+  position: relative;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--dt-gap);
+  max-block-size: clamp(13rem, 42vh, 28rem);
+  overflow-x: visible;
+  overflow-y: auto;
+  /* No overscroll-behavior here: `contain` on an in-page rail makes the
+     browser swallow wheel events even when nothing overflows (a scroll
+     container with nothing to scroll still captures the gesture, and
+     `contain` forbids chaining to the page), freezing page scroll while
+     the cursor is over the rail. Scroll must chain to the page. */
+  padding-block: var(--dt-padding);
+  padding-inline-start: 0.25rem;
+}
+
+.dossier-tabs--vertical::before {
+  content: "";
+  position: absolute;
+  inset-block: var(--dt-padding);
+  inset-inline-end: 0;
+  inline-size: 1px;
+  background: var(--dt-rail);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right {
+  align-items: flex-start;
+  padding-inline-start: 0;
+  padding-inline-end: 0.25rem;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right::before {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack {
+  gap: 0;
+  padding-inline-start: var(--dt-stack-room);
+  padding-inline-end: 0;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack {
+  padding-inline-start: 0;
+  padding-inline-end: var(--dt-stack-room);
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack::before {
+  inline-size: 2px;
+  background: linear-gradient(180deg, transparent, var(--dt-rail) 18%, var(--dt-rail) 82%, transparent);
+  opacity: 0.46;
+}
+
+.dossier-tabs--density-overlap,
+.dossier-tabs--density-dense {
+  gap: 0;
+}
+
+.dossier-tabs--density-overlap .dossier-tabs__tab + .dossier-tabs__tab {
+  margin-block-start: -0.25rem;
+}
+
+.dossier-tabs--density-dense .dossier-tabs__tab + .dossier-tabs__tab {
+  margin-block-start: -0.75rem;
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab + .dossier-tabs__tab {
+  margin-block-start: -0.46rem;
+}
+
+.dossier-tabs__tab {
+  --dt-open-inline-size: calc(
+    2.5rem + var(--dt-label-max) + var(--dt-count-max) + var(--dt-lock-max) + 1.75rem
+  );
+  --dt-open-block-size: calc(var(--dt-min-block-size) + var(--dt-label-max) + 2.1rem);
+
+  position: relative;
+  z-index: calc(1 + var(--dossier-index-index, 0));
+  border: 1px solid var(--dt-border);
+  background: var(--dt-surface);
+  color: var(--dossier-ink-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--dt-label-size);
+  font-weight: 650;
+  line-height: 1.2;
+  overflow: hidden;
+  text-align: start;
+  white-space: nowrap;
+  scale: 1;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease,
+    filter 160ms ease,
+    inline-size 180ms ease,
+    block-size 180ms ease,
+    scale var(--dossier-motion-duration) var(--dossier-motion-ease),
+    transform var(--dossier-motion-duration) var(--dossier-motion-ease);
+}
+
+.dossier-tabs__tab::before {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: transparent;
+  transition: background-color 160ms ease;
+}
+
+.dossier-tabs__tab::after {
+  content: "";
+  position: absolute;
+  background: var(--dt-surface-active);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.dossier-tabs__tab:hover,
+.dossier-tabs__tab:focus-visible {
+  z-index: calc(30 + var(--dossier-index-index, 0));
+  border-color: var(--dt-border-active);
+  background: var(--dt-surface-active);
+  color: var(--dossier-ink);
+}
+
+.dossier-tabs__tab:focus-visible {
+  outline: 2px solid var(--dt-focus);
+  outline-offset: 3px;
+}
+
+.dossier-tabs__tab.is-active {
+  z-index: calc(50 + var(--dossier-index-index, 0));
+  border-color: var(--dt-border-active);
+  background: var(--dt-surface-active);
+  color: var(--dt-text);
+}
+
+.dossier-tabs__tab.is-pulled {
+  z-index: calc(80 + var(--dossier-index-index, 0));
+  filter: brightness(1.05) saturate(1.04);
+  scale: 1.006;
+}
+
+.dossier-tabs__tab.is-grabbing {
+  z-index: calc(100 + var(--dossier-index-index, 0));
+  filter: brightness(1.08) saturate(1.04);
+  scale: 1.018;
+}
+
+.dossier-tabs__tab.is-receding {
+  z-index: calc(20 + var(--dossier-index-index, 0));
+}
+
+.dossier-tabs__tab.is-active::before {
+  background: var(--dt-border-active);
+}
+
+.dossier-tabs__tab.is-active::after {
+  opacity: 1;
+}
+
+.dossier-tabs__tab.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.dossier-tabs__icon {
+  position: absolute;
+  display: inline-flex;
+  inline-size: 1rem;
+  block-size: 1rem;
+  color: currentColor;
+  opacity: 0.74;
+}
+
+.dossier-tabs__icon > svg,
+.dossier-tabs__lock {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.dossier-tabs__label,
+.dossier-tabs__count,
+.dossier-tabs__lock {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dossier-tabs__label {
+  max-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dossier-tabs__count {
+  color: var(--dt-muted);
+  font-family: ui-monospace, "SFMono-Regular", "SF Mono", Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.dossier-tabs__lock {
+  color: var(--dt-muted);
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--dt-size);
+  block-size: var(--dt-min-block-size);
+  min-inline-size: var(--dt-size);
+  min-block-size: var(--dt-min-block-size);
+  padding: 0.5rem;
+  border-block-end: 0;
+  border-radius: var(--dt-radius) var(--dt-radius) 0 0;
+  margin-block-end: -1px;
+  transform: translateY(0);
+  transform-origin: center bottom;
+}
+
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom .dossier-tabs__tab {
+  border-block-start: 0;
+  border-block-end: 1px solid var(--dt-border);
+  border-radius: 0 0 var(--dt-radius) var(--dt-radius);
+  margin-block-start: -1px;
+  margin-block-end: 0;
+  transform-origin: center top;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab::before {
+  inset-inline: 0.5rem;
+  inset-block-end: 0;
+  block-size: 1px;
+  display: none;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab::after {
+  inset-inline: 0;
+  inset-block-end: -1px;
+  block-size: 1px;
+  display: none;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__icon {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  transition: inset-inline-start 180ms ease, opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__label {
+  inset-block-start: 50%;
+  inset-inline-start: 2.5rem;
+  transform: translateY(-50%) translateX(-0.25rem);
+  transition: max-inline-size 180ms ease, opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__count,
+.dossier-tabs--horizontal .dossier-tabs__lock {
+  inset-block-start: 50%;
+  transform: translateY(-50%) translateX(0.25rem);
+  transition: opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__count {
+  inset-inline-end: calc(0.75rem + var(--dt-lock-max) + 0.35rem);
+}
+
+.dossier-tabs--horizontal .dossier-tabs__lock {
+  inset-inline-end: 0.75rem;
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--dt-size);
+  block-size: var(--dt-min-block-size);
+  min-block-size: var(--dt-min-block-size);
+  padding: 0.5rem;
+  border-inline-end: 0;
+  border-radius: var(--dt-radius) 0 0 var(--dt-radius);
+  transform: translateX(0);
+  transform-origin: right center;
+}
+
+.dossier-tabs--vertical.dossier-tabs--gravity-start .dossier-tabs__tab {
+  transform-origin: right top;
+}
+
+.dossier-tabs--vertical.dossier-tabs--gravity-end .dossier-tabs__tab {
+  transform-origin: right bottom;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right .dossier-tabs__tab {
+  border-inline-start: 0;
+  border-inline-end: 1px solid var(--dt-border);
+  border-radius: 0 var(--dt-radius) var(--dt-radius) 0;
+  transform-origin: left center;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--gravity-start .dossier-tabs__tab {
+  transform-origin: left top;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--gravity-end .dossier-tabs__tab {
+  transform-origin: left bottom;
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab {
+  --dt-stack-offset: var(--dossier-index-stack-left-offset, 0rem);
+  --dt-stack-hover-offset: var(--dossier-index-stack-left-hover-offset, 0rem);
+
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%),
+    var(--dt-surface);
+  border-color: rgba(150, 145, 132, 0.72);
+  box-shadow:
+    -0.26rem 0.42rem 0.9rem rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  transform: translateX(var(--dt-stack-offset));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack .dossier-tabs__tab {
+  --dt-stack-offset: var(--dossier-index-stack-right-offset, 0rem);
+  --dt-stack-hover-offset: var(--dossier-index-stack-right-hover-offset, 0rem);
+
+  background:
+    linear-gradient(270deg, rgba(255, 255, 255, 0.07), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%),
+    var(--dt-surface);
+  box-shadow:
+    0.26rem 0.42rem 0.9rem rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab::before {
+  inset-block: 0.48rem;
+  inline-size: 2px;
+  background: rgba(226, 219, 201, 0.28);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  opacity: 0.62;
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab::after {
+  background: linear-gradient(180deg, transparent, rgba(226, 219, 201, 0.3) 18%, rgba(226, 219, 201, 0.2) 82%, transparent);
+  opacity: 0.34;
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab.is-active {
+  box-shadow:
+    -0.38rem 0.7rem 1.35rem rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  filter: saturate(1.03);
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab.is-active::after {
+  background: var(--dt-surface-active);
+  opacity: 1;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack .dossier-tabs__tab.is-active {
+  box-shadow:
+    0.38rem 0.7rem 1.35rem rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.dossier-tabs--texture-paper.dossier-tabs--texture-layer-tab .dossier-tabs__tab {
+  background-color: var(--dt-surface);
+  background-image:
+    var(--dossier-paper-texture),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 44%);
+  background-blend-mode: var(--dossier-paper-blend-mode), normal;
+  background-size: var(--dossier-paper-texture-size), auto;
+}
+
+.dossier-tabs--texture-paper.dossier-tabs--texture-layer-tab .dossier-tabs__tab:hover,
+.dossier-tabs--texture-paper.dossier-tabs--texture-layer-tab .dossier-tabs__tab:focus-visible,
+.dossier-tabs--texture-paper.dossier-tabs--texture-layer-tab .dossier-tabs__tab.is-active {
+  background-color: var(--dt-surface-active);
+}
+
+.dossier-tabs--texture-paper.dossier-tabs--texture-layer-tab.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab {
+  background-color: var(--dt-surface);
+  background-image:
+    var(--dossier-paper-texture),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%);
+  background-size: var(--dossier-paper-texture-size), auto, auto;
+}
+
+.dossier-tabs--texture-paper.dossier-tabs--texture-layer-tab.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack .dossier-tabs__tab {
+  background-image:
+    var(--dossier-paper-texture),
+    linear-gradient(270deg, rgba(255, 255, 255, 0.07), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%);
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab::before {
+  inset-block: 0.5rem;
+  inset-inline-start: 0;
+  inline-size: 1px;
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab::after {
+  inset-block: 0;
+  inset-inline-end: -1px;
+  inline-size: 1px;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right .dossier-tabs__tab::before {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right .dossier-tabs__tab::after {
+  inset-inline-start: -1px;
+  inset-inline-end: auto;
+}
+
+.dossier-tabs--vertical .dossier-tabs__icon {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  transition: inset-block-start 180ms ease, opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-tabs--vertical .dossier-tabs__label {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%) rotate(var(--dt-label-rotation)) translateX(0.25rem);
+  transform-origin: center;
+  writing-mode: horizontal-tb;
+  transition: max-inline-size 180ms ease, opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-tabs--vertical .dossier-tabs__count {
+  inset-block-end: 0.5rem;
+  inset-inline-start: 50%;
+  transform: translate(-50%, 0.25rem);
+  transition: opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab:hover {
+  box-shadow:
+    0 0.65rem 1.45rem rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  transform: translateY(var(--dt-hover-lift));
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab:active {
+  transform: translateY(var(--dt-press-lift));
+}
+
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom .dossier-tabs__tab:hover {
+  box-shadow:
+    0 -0.65rem 1.45rem rgba(0, 0, 0, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.055);
+  transform: translateY(calc(var(--dt-hover-lift) * -1));
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab:hover {
+  box-shadow: inset -1px 0 0 var(--dt-surface-active), var(--dt-shadow);
+  transform: translateX(var(--dt-hover-lift));
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab:active {
+  transform: translateX(var(--dt-press-lift));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right .dossier-tabs__tab:hover {
+  box-shadow: inset 1px 0 0 var(--dt-surface-active), var(--dt-shadow);
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab.is-active,
+.dossier-tabs--horizontal.dossier-tabs--expand-always .dossier-tabs__tab,
+.dossier-tabs--horizontal.dossier-tabs--expand-hover .dossier-tabs__tab:hover,
+.dossier-tabs--horizontal.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible {
+  inline-size: var(--dt-open-inline-size);
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab.is-active,
+.dossier-tabs--vertical.dossier-tabs--expand-always .dossier-tabs__tab,
+.dossier-tabs--vertical.dossier-tabs--expand-hover .dossier-tabs__tab:hover,
+.dossier-tabs--vertical.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible {
+  block-size: var(--dt-open-block-size);
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab.is-active,
+.dossier-tabs--horizontal.dossier-tabs--expand-always .dossier-tabs__tab,
+.dossier-tabs--horizontal.dossier-tabs--expand-hover .dossier-tabs__tab:hover,
+.dossier-tabs--horizontal.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible {
+  transform: translateY(var(--dt-lift));
+}
+
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom .dossier-tabs__tab.is-active,
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom.dossier-tabs--expand-always .dossier-tabs__tab,
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom.dossier-tabs--expand-hover .dossier-tabs__tab:hover,
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible {
+  transform: translateY(calc(var(--dt-lift) * -1));
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab.is-active,
+.dossier-tabs--vertical.dossier-tabs--expand-always .dossier-tabs__tab,
+.dossier-tabs--vertical.dossier-tabs--expand-hover .dossier-tabs__tab:hover,
+.dossier-tabs--vertical.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible {
+  transform: translateX(var(--dt-lift));
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab:hover {
+  box-shadow:
+    -0.34rem 0.55rem 1.05rem rgba(0, 0, 0, 0.26),
+    inset -1px 0 0 var(--dt-surface-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateX(var(--dt-stack-hover-offset));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack .dossier-tabs__tab:hover {
+  box-shadow:
+    0.34rem 0.55rem 1.05rem rgba(0, 0, 0, 0.26),
+    inset 1px 0 0 var(--dt-surface-active),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab:active,
+.dossier-tabs--vertical.dossier-tabs--appearance-stack .dossier-tabs__tab.is-active,
+.dossier-tabs--vertical.dossier-tabs--appearance-stack.dossier-tabs--expand-always .dossier-tabs__tab,
+.dossier-tabs--vertical.dossier-tabs--appearance-stack.dossier-tabs--expand-hover .dossier-tabs__tab:hover,
+.dossier-tabs--vertical.dossier-tabs--appearance-stack.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible {
+  transform: translateX(0);
+}
+
+.dossier-tabs--horizontal.dossier-tabs--edge-top .dossier-tabs__tab.is-pulled,
+.dossier-tabs--horizontal.dossier-tabs--edge-top .dossier-tabs__tab.is-grabbing {
+  transform: translateY(calc(var(--dt-lift) - var(--dt-dossier-pull-distance)));
+}
+
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom .dossier-tabs__tab.is-pulled,
+.dossier-tabs--horizontal.dossier-tabs--edge-bottom .dossier-tabs__tab.is-grabbing {
+  transform: translateY(calc((var(--dt-lift) * -1) + var(--dt-dossier-pull-distance)));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-left .dossier-tabs__tab.is-pulled,
+.dossier-tabs--vertical.dossier-tabs--edge-left .dossier-tabs__tab.is-grabbing {
+  transform: translateX(calc(var(--dt-lift) - var(--dt-dossier-pull-distance)));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right .dossier-tabs__tab.is-pulled,
+.dossier-tabs--vertical.dossier-tabs--edge-right .dossier-tabs__tab.is-grabbing {
+  transform: translateX(calc(var(--dt-lift) + var(--dt-dossier-pull-distance)));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-left.dossier-tabs--appearance-stack .dossier-tabs__tab.is-pulled,
+.dossier-tabs--vertical.dossier-tabs--edge-left.dossier-tabs--appearance-stack .dossier-tabs__tab.is-grabbing {
+  transform: translateX(calc(var(--dt-dossier-pull-distance) * -1));
+}
+
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack .dossier-tabs__tab.is-pulled,
+.dossier-tabs--vertical.dossier-tabs--edge-right.dossier-tabs--appearance-stack .dossier-tabs__tab.is-grabbing {
+  transform: translateX(var(--dt-dossier-pull-distance));
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab.is-active .dossier-tabs__icon,
+.dossier-tabs--horizontal.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__icon,
+.dossier-tabs--horizontal.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__icon,
+.dossier-tabs--horizontal.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__icon {
+  inset-inline-start: 0.75rem;
+  opacity: 0.95;
+  transform: translateY(-50%);
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab.is-active .dossier-tabs__label,
+.dossier-tabs--horizontal.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__label,
+.dossier-tabs--horizontal.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__label,
+.dossier-tabs--horizontal.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__label {
+  max-inline-size: var(--dt-label-max);
+  overflow: visible;
+  opacity: 1;
+  transform: translateY(-50%);
+  visibility: visible;
+}
+
+.dossier-tabs--horizontal .dossier-tabs__tab.is-active .dossier-tabs__count,
+.dossier-tabs--horizontal .dossier-tabs__tab.is-active .dossier-tabs__lock,
+.dossier-tabs--horizontal.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__count,
+.dossier-tabs--horizontal.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__lock,
+.dossier-tabs--horizontal.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__count,
+.dossier-tabs--horizontal.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__lock,
+.dossier-tabs--horizontal.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__count,
+.dossier-tabs--horizontal.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__lock {
+  opacity: 1;
+  transform: translateY(-50%);
+  visibility: visible;
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab.is-active .dossier-tabs__icon,
+.dossier-tabs--vertical.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__icon,
+.dossier-tabs--vertical.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__icon,
+.dossier-tabs--vertical.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__icon {
+  inset-block-start: 0.75rem;
+  opacity: 0.95;
+  transform: translateX(-50%);
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab.is-active .dossier-tabs__label,
+.dossier-tabs--vertical.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__label,
+.dossier-tabs--vertical.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__label,
+.dossier-tabs--vertical.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__label {
+  max-inline-size: var(--dt-label-max);
+  overflow: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(var(--dt-label-rotation));
+  visibility: visible;
+}
+
+.dossier-tabs--vertical .dossier-tabs__tab.is-active .dossier-tabs__count,
+.dossier-tabs--vertical.dossier-tabs--expand-always .dossier-tabs__tab .dossier-tabs__count,
+.dossier-tabs--vertical.dossier-tabs--expand-hover .dossier-tabs__tab:hover .dossier-tabs__count,
+.dossier-tabs--vertical.dossier-tabs--expand-focus .dossier-tabs__tab:focus-visible .dossier-tabs__count {
+  opacity: 1;
+  transform: translateX(-50%);
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dossier-tabs__tab.is-active {
+    animation: dossier-index-settle 180ms ease-out;
+  }
+}
+
+@keyframes dossier-index-settle {
+  0% {
+    filter: brightness(1.08);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dossier-tabs__tab,
+  .dossier-tabs__tab::before,
+  .dossier-tabs__tab::after,
+  .dossier-tabs__icon,
+  .dossier-tabs__label,
+  .dossier-tabs__count,
+  .dossier-tabs__lock,
+  .dossier-stack__sheet::after,
+  .dossier-stack__content::before,
+  .dossier-stack__tab::before {
+    transition: none !important;
+  }
+
+  .dossier-tabs__tab,
+  .dossier-tabs__tab::before,
+  .dossier-tabs__tab::after,
+  .dossier-stack__sheet::after,
+  .dossier-stack__content::before,
+  .dossier-stack__tab::before {
+    animation: none !important;
+  }
+}
+
+.dossier-tray,
+.dossier-file-stack {
+  --dossier-motion-duration: 420ms;
+  --dossier-motion-return-duration: 315ms;
+  --dossier-motion-ease: cubic-bezier(0.32, 0, 0.2, 1);
+  --dossier-tint: #858174;
+  --dossier-accent: #d8ff72;
+  --dossier-border: color-mix(in srgb, var(--dossier-tint) 48%, #45433d);
+  --dossier-surface: color-mix(in srgb, var(--dossier-tint) 12%, #1b1d1a);
+  --dossier-layer-surface: color-mix(in srgb, var(--dossier-tint) 14%, #151713);
+  --dossier-layer-border: color-mix(in srgb, var(--dossier-tint) 46%, transparent);
+  --dossier-shadow-x: 0rem;
+  --dossier-shadow-y-default: 1rem;
+  --dossier-shadow-y: var(--dossier-shadow-y-default);
+  --dossier-shadow-y-reverse: -0.74rem;
+  --dossier-shadow-blur: 2.25rem;
+  --dossier-shadow-alpha: 0.22;
+  --dossier-contact-shadow: 0 0.18rem 0.44rem rgba(0, 0, 0, 0.18);
+  --dossier-shadow:
+    var(--dossier-contact-shadow),
+    var(--dossier-shadow-x) var(--dossier-shadow-y) var(--dossier-shadow-blur) rgba(0, 0, 0, var(--dossier-shadow-alpha));
+  --dossier-tucked-shadow:
+    0 0.36rem 0.9rem rgba(0, 0, 0, 0.16),
+    0 0.08rem 0.22rem rgba(0, 0, 0, 0.16);
+  --dossier-pulled-shadow:
+    0 1.65rem 3.25rem rgba(0, 0, 0, 0.32),
+    0 0.42rem 1.05rem rgba(0, 0, 0, 0.22);
+  --dossier-layer-one-shadow: 0 0.24rem 0.62rem rgba(0, 0, 0, 0.14);
+  --dossier-layer-two-shadow: 0 0.44rem 1rem rgba(0, 0, 0, 0.16);
+  --dossier-layer-one-x: 0rem;
+  --dossier-layer-one-y: 0.55rem;
+  --dossier-layer-two-x: 0rem;
+  --dossier-layer-two-y: 1.02rem;
+  --dossier-layer-one-opacity: 0.72;
+  --dossier-layer-two-opacity: 0.46;
+  --dossier-paper-sheet-opacity: var(--dossier-paper-sheet-opacity-custom, 0.42);
+  --dossier-paper-content-opacity: var(--dossier-paper-content-opacity-custom, 0.34);
+  --dossier-paper-tab-opacity: var(--dossier-paper-tab-opacity-custom, 0.38);
+
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+}
+
+.dossier-tray--tone-slate,
+.dossier--tone-slate {
+  --dossier-tint: #858174;
+  --dossier-accent: #d8ff72;
+}
+
+.dossier-tray--tone-moss,
+.dossier--tone-moss {
+  --dossier-tint: #90b894;
+  --dossier-accent: #d8ff72;
+}
+
+.dossier-tray--tone-teal,
+.dossier--tone-teal {
+  --dossier-tint: #7ec6bd;
+  --dossier-accent: #a7f3d0;
+}
+
+.dossier-tray--tone-copper,
+.dossier--tone-copper {
+  --dossier-tint: #d38b65;
+  --dossier-accent: #ffd29b;
+}
+
+.dossier-tray--tone-violet,
+.dossier--tone-violet {
+  --dossier-tint: #a998d7;
+  --dossier-accent: #f0d6ff;
+}
+
+.dossier-tray--tone-steel,
+.dossier--tone-steel {
+  --dossier-tint: #7890a3;
+  --dossier-accent: #d7e9f7;
+}
+
+.dossier-tray,
+.dossier-file-stack,
+.dossier {
+  --dossier-border: color-mix(in srgb, var(--dossier-tint) 48%, #45433d);
+  --dossier-surface: color-mix(in srgb, var(--dossier-tint) 12%, #1b1d1a);
+  --dossier-layer-surface: color-mix(in srgb, var(--dossier-tint) 14%, #151713);
+  --dossier-layer-border: color-mix(in srgb, var(--dossier-tint) 46%, transparent);
+}
+
+.dossier-tray--texture-paper,
+.dossier-file-stack--texture-paper,
+.dossier--texture-paper {
+  --dossier-border: color-mix(in srgb, var(--dossier-tint) 44%, #8a8374);
+  --dossier-layer-border: color-mix(in srgb, var(--dossier-tint) 44%, rgba(226, 219, 201, 0.28));
+  --dossier-paper-sheet-opacity: var(--dossier-paper-sheet-opacity-custom, 0.5);
+  --dossier-paper-content-opacity: var(--dossier-paper-content-opacity-custom, 0.3);
+  --dossier-paper-tab-opacity: var(--dossier-paper-tab-opacity-custom, 0.42);
+}
+
+.dossier {
+  position: relative;
+  border: 1px solid var(--dossier-border);
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--dossier-tint) 18%, transparent), transparent 22rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 40%),
+    var(--dossier-surface);
+  box-shadow: var(--dossier-shadow);
+  color: var(--dossier-ink);
+  transition:
+    box-shadow var(--dossier-motion-duration) ease,
+    filter var(--dossier-motion-duration) ease,
+    transform var(--dossier-motion-duration) var(--dossier-motion-ease);
+}
+
+.dossier--texture-paper.dossier--texture-layer-sheet:not(.dossier-stack__file)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--dossier-paper-texture);
+  background-blend-mode: var(--dossier-paper-blend-mode);
+  background-size: var(--dossier-paper-texture-size);
+  filter: var(--dossier-paper-filter);
+  mix-blend-mode: var(--dossier-paper-composite-mode);
+  opacity: var(--dossier-paper-sheet-opacity);
+  pointer-events: none;
+}
+
+.dossier--texture-paper.dossier--texture-layer-sheet:not(.dossier-stack__file) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dossier::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0.65rem;
+  inset-block-start: 0;
+  z-index: 2;
+  block-size: 1px;
+  background: color-mix(in srgb, var(--dossier-accent) 34%, transparent);
+  opacity: 0.56;
+  pointer-events: none;
+}
+
+.dossier-tray::before,
+.dossier-tray::after,
+.dossier-file-stack::before,
+.dossier-file-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--dossier-layer-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 38%),
+    var(--dossier-layer-surface);
+  pointer-events: none;
+}
+
+.dossier-tray--texture-paper.dossier-tray--texture-layer-sheet::before,
+.dossier-tray--texture-paper.dossier-tray--texture-layer-sheet::after,
+.dossier-file-stack--texture-paper.dossier-file-stack--texture-layer-sheet::before,
+.dossier-file-stack--texture-paper.dossier-file-stack--texture-layer-sheet::after {
+  background-color: var(--dossier-layer-surface);
+  background-image:
+    var(--dossier-paper-texture),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 38%);
+  background-blend-mode: var(--dossier-paper-blend-mode), normal;
+  background-size: var(--dossier-paper-texture-size), auto;
+}
+
+.dossier-tray::before,
+.dossier-file-stack::before {
+  opacity: var(--dossier-layer-one-opacity);
+  box-shadow: var(--dossier-layer-one-shadow);
+  transform: translate3d(var(--dossier-layer-one-x), var(--dossier-layer-one-y), -1px);
+}
+
+.dossier-tray::after,
+.dossier-file-stack::after {
+  opacity: var(--dossier-layer-two-opacity);
+  box-shadow: var(--dossier-layer-two-shadow);
+  transform: translate3d(var(--dossier-layer-two-x), var(--dossier-layer-two-y), -2px);
+}
+
+.dossier-tray.is-pulled,
+.dossier-file-stack.is-pulled {
+  z-index: 90;
+}
+
+.dossier-tray--layers-0::before,
+.dossier-tray--layers-0::after,
+.dossier-file-stack--layers-0::before,
+.dossier-file-stack--layers-0::after,
+.dossier-tray--layers-1::after,
+.dossier-file-stack--layers-1::after,
+.dossier-tray--depth-flat::before,
+.dossier-tray--depth-flat::after,
+.dossier-file-stack--depth-flat::before,
+.dossier-file-stack--depth-flat::after {
+  display: none;
+}
+
+.dossier-tray--edge-left,
+.dossier-file-stack--edge-left {
+  --dossier-shadow-x: -0.22rem;
+  --dossier-shadow-y: 0.86rem;
+  --dossier-layer-one-shadow: -0.18rem 0.22rem 0.64rem rgba(0, 0, 0, 0.14);
+  --dossier-layer-two-shadow: -0.34rem 0.34rem 1rem rgba(0, 0, 0, 0.16);
+  --dossier-layer-one-x: 0.68rem;
+  --dossier-layer-one-y: 0rem;
+  --dossier-layer-two-x: 1.18rem;
+  --dossier-layer-two-y: 0rem;
+}
+
+.dossier-tray--edge-right,
+.dossier-file-stack--edge-right {
+  --dossier-shadow-x: 0.22rem;
+  --dossier-shadow-y: 0.86rem;
+  --dossier-layer-one-shadow: 0.18rem 0.22rem 0.64rem rgba(0, 0, 0, 0.14);
+  --dossier-layer-two-shadow: 0.34rem 0.34rem 1rem rgba(0, 0, 0, 0.16);
+  --dossier-layer-one-x: -0.68rem;
+  --dossier-layer-one-y: 0rem;
+  --dossier-layer-two-x: -1.18rem;
+  --dossier-layer-two-y: 0rem;
+}
+
+.dossier-tray--edge-bottom,
+.dossier-file-stack--edge-bottom {
+  --dossier-shadow-y: var(--dossier-shadow-y-reverse);
+  --dossier-layer-one-shadow: 0 -0.22rem 0.64rem rgba(0, 0, 0, 0.14);
+  --dossier-layer-two-shadow: 0 -0.36rem 1rem rgba(0, 0, 0, 0.16);
+  --dossier-layer-one-x: 0rem;
+  --dossier-layer-one-y: -0.55rem;
+  --dossier-layer-two-x: 0rem;
+  --dossier-layer-two-y: -1.02rem;
+}
+
+.dossier-tray--depth-flat,
+.dossier-file-stack--depth-flat {
+  --dossier-shadow: none;
+  --dossier-tucked-shadow: none;
+  --dossier-pulled-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  --dossier-layer-one-shadow: none;
+  --dossier-layer-two-shadow: none;
+}
+
+.dossier-tray--depth-subtle,
+.dossier-file-stack--depth-subtle {
+  --dossier-shadow-y-default: 0.68rem;
+  --dossier-shadow-y-reverse: -0.52rem;
+  --dossier-shadow-blur: 1.35rem;
+  --dossier-shadow-alpha: 0.16;
+  --dossier-contact-shadow: 0 0.12rem 0.3rem rgba(0, 0, 0, 0.14);
+  --dossier-tucked-shadow:
+    0 0.24rem 0.58rem rgba(0, 0, 0, 0.12),
+    0 0.06rem 0.16rem rgba(0, 0, 0, 0.12);
+  --dossier-pulled-shadow:
+    0 1rem 2.1rem rgba(0, 0, 0, 0.22),
+    0 0.26rem 0.72rem rgba(0, 0, 0, 0.16);
+  --dossier-layer-one-shadow: 0 0.14rem 0.4rem rgba(0, 0, 0, 0.1);
+  --dossier-layer-two-shadow: 0 0.24rem 0.68rem rgba(0, 0, 0, 0.11);
+  --dossier-layer-one-opacity: 0.42;
+  --dossier-layer-two-opacity: 0.22;
+}
+
+.dossier-tray--depth-deep,
+.dossier-file-stack--depth-deep {
+  --dossier-shadow-y-default: 1.34rem;
+  --dossier-shadow-y-reverse: -1rem;
+  --dossier-shadow-blur: 3.7rem;
+  --dossier-shadow-alpha: 0.3;
+  --dossier-contact-shadow: 0 0.3rem 0.72rem rgba(0, 0, 0, 0.22);
+  --dossier-tucked-shadow:
+    0 0.58rem 1.18rem rgba(0, 0, 0, 0.2),
+    0 0.12rem 0.32rem rgba(0, 0, 0, 0.2);
+  --dossier-pulled-shadow:
+    0 2.15rem 4.35rem rgba(0, 0, 0, 0.38),
+    0 0.64rem 1.38rem rgba(0, 0, 0, 0.26);
+  --dossier-layer-one-shadow: 0 0.34rem 0.82rem rgba(0, 0, 0, 0.18);
+  --dossier-layer-two-shadow: 0 0.62rem 1.34rem rgba(0, 0, 0, 0.2);
+  --dossier-layer-one-opacity: 0.72;
+  --dossier-layer-two-opacity: 0.48;
+}
+
+.dossier-stack {
+  --dt-text: var(--dossier-ink);
+  --dt-muted: var(--dossier-ink-muted);
+  --dossier-attached-tab-cross-size: var(--dt-size, 2.75rem);
+  --dossier-attached-tab-compact-size: var(--dt-size, 2.75rem);
+  --dossier-attached-tab-grab-size: var(--dossier-attached-tab-cross-size);
+  --dossier-attached-tab-reach-size: var(--dossier-attached-tab-cross-size);
+  --dossier-attached-tab-open-size: 9.75rem;
+  --dossier-attached-tab-gap: 0.78rem;
+  --dossier-attached-tab-radius: var(--dt-radius, 0.5rem);
+  --dossier-attached-tab-padding: 0.5rem;
+  --dossier-attached-tab-vertical-icon-offset: 0.78rem;
+  --dossier-attached-tab-vertical-count-offset: 0.72rem;
+  --dossier-attached-tab-vertical-label-size: max(4.75rem, calc(var(--dossier-attached-tab-open-size) - 4.9rem));
+  --dossier-stack-border-width: 1px;
+  --dossier-side-stack-reveal: 6rem;
+  --dossier-side-tab-outset: max(
+    var(--dossier-side-stack-reveal),
+    calc(var(--dossier-attached-tab-cross-size) + var(--dossier-attached-tab-gap))
+  );
+  --dossier-piece-slot: 0px;
+  --dossier-index-slot: var(--dossier-piece-slot);
+  --dossier-index-group-size: var(--dossier-attached-tab-compact-size);
+  --dossier-piece-x: 0px;
+  --dossier-piece-y: 0px;
+  --dossier-piece-rotate: 0deg;
+  --dossier-piece-rest-x: 0px;
+  --dossier-piece-rest-y: 0px;
+  --dossier-index-hover-x: 0px;
+  --dossier-index-hover-y: 0px;
+  --dossier-piece-pull-x: 0px;
+  --dossier-piece-pull-y: 0px;
+  --dossier-piece-z: 1;
+  --dt-label-rotation: -90deg;
+  --dossier-paper-sheet-opacity: var(--dossier-paper-sheet-opacity-custom, 0.48);
+  --dossier-paper-content-opacity: var(--dossier-paper-content-opacity-custom, 0.28);
+  --dossier-paper-tab-opacity: var(--dossier-paper-tab-opacity-custom, 0.36);
+
+  display: block;
+  min-inline-size: 0;
+  overflow-y: visible;
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  color: var(--dossier-ink);
+}
+
+.dossier-stack--texture-paper {
+  --dossier-paper-sheet-opacity: var(--dossier-paper-sheet-opacity-custom, 0.5);
+  --dossier-paper-content-opacity: var(--dossier-paper-content-opacity-custom, 0.3);
+  --dossier-paper-tab-opacity: var(--dossier-paper-tab-opacity-custom, 0.42);
+}
+
+.dossier-stack.is-pulled {
+  z-index: 90;
+}
+
+.dossier-stack__tray,
+.dossier-stack__stack {
+  min-inline-size: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.dossier-stack__stack {
+  display: grid;
+  z-index: 1;
+}
+
+.dossier-stack__file {
+  --dossier-attached-tab-border: var(--dossier-border);
+  --dossier-attached-tab-border-active: color-mix(in srgb, var(--dossier-accent) 32%, var(--dossier-border));
+  --dossier-attached-tab-surface: color-mix(in srgb, var(--dossier-tint) 6%, var(--dossier-surface));
+  --dossier-attached-tab-surface-active: color-mix(in srgb, var(--dossier-tint) 22%, var(--dossier-surface));
+  --dossier-index-transform-x: 0px;
+  --dossier-index-transform-y: 0px;
+  --dossier-index-rotate: 0deg;
+
+  grid-area: 1 / 1;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  z-index: var(--dossier-piece-z);
+  overflow: visible;
+  transform: translate3d(var(--dossier-piece-x), var(--dossier-piece-y), 0px);
+  transition:
+    filter var(--dossier-motion-duration) ease,
+    transform var(--dossier-motion-duration) var(--dossier-motion-ease);
+}
+
+.dossier-stack--stack-rotation-pieces .dossier-stack__file {
+  transform: translate3d(var(--dossier-piece-x), var(--dossier-piece-y), 0px) rotate(var(--dossier-piece-rotate));
+}
+
+.dossier-stack--stack-rotation-files.dossier-stack--tab-rotation-rotated .dossier-stack__file:not(.is-active) {
+  --dossier-index-rotate: var(--dossier-index-piece-rotate);
+}
+
+.dossier-stack--stack-rotation-pieces.dossier-stack--tab-rotation-straight .dossier-stack__file:not(.is-active) {
+  --dossier-index-rotate: var(--dossier-index-counter-rotate);
+}
+
+.dossier-stack__file::before {
+  display: none;
+}
+
+.dossier-stack__sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 1px solid var(--dossier-border);
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--dossier-tint) 18%, transparent), transparent 22rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 40%),
+    var(--dossier-surface);
+  box-shadow: var(--dossier-shadow);
+  pointer-events: none;
+  transform: rotate(0deg);
+  transform-origin: inherit;
+  transition:
+    box-shadow var(--dossier-motion-duration) ease,
+    filter var(--dossier-motion-duration) ease,
+    transform var(--dossier-motion-duration) var(--dossier-motion-ease);
+}
+
+.dossier-stack__sheet::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0.65rem;
+  inset-block-start: 0;
+  z-index: 2;
+  block-size: 1px;
+  background: color-mix(in srgb, var(--dossier-accent) 34%, transparent);
+  opacity: 0.56;
+  pointer-events: none;
+}
+
+.dossier-stack__sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: var(--dossier-paper-texture);
+  background-blend-mode: var(--dossier-paper-blend-mode);
+  background-size: var(--dossier-paper-texture-size);
+  filter: var(--dossier-paper-filter);
+  mix-blend-mode: var(--dossier-paper-composite-mode);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.dossier-stack--texture-paper.dossier-stack--texture-layer-sheet .dossier-stack__sheet::after {
+  opacity: var(--dossier-paper-sheet-opacity);
+}
+
+.dossier-stack--stack-rotation-files .dossier-stack__sheet {
+  transform: rotate(var(--dossier-piece-rotate));
+}
+
+.dossier-stack__file:not(.is-active) {
+  pointer-events: none;
+}
+
+.dossier-stack__file:not(.is-active) .dossier-stack__tab {
+  pointer-events: auto;
+}
+
+.dossier-stack__file.is-tucked .dossier-stack__sheet {
+  border-color: color-mix(in srgb, var(--dossier-border) 74%, transparent);
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--dossier-tint) 12%, transparent), transparent 17rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.034), transparent 38%),
+    color-mix(in srgb, var(--dossier-tint) 8%, #151713);
+  box-shadow: var(--dossier-tucked-shadow);
+}
+
+.dossier-stack__file.is-tucked .dossier-stack__sheet::before {
+  opacity: 0.28;
+}
+
+.dossier-stack__file.is-tucked {
+  transition-duration: 0ms;
+}
+
+.dossier-stack__file:not(.is-active):focus-within,
+.dossier-stack__file:not(.is-active).is-focused,
+.dossier-stack__file:not(.is-active).is-hovered {
+  z-index: var(--dossier-piece-z);
+}
+
+.dossier-stack__file:not(.is-active):focus-within .dossier-stack__tab,
+.dossier-stack__file:not(.is-active).is-focused .dossier-stack__tab,
+.dossier-stack__file:not(.is-active).is-hovered .dossier-stack__tab {
+  --dossier-index-transform-x: var(--dossier-index-hover-x);
+  --dossier-index-transform-y: var(--dossier-index-hover-y);
+}
+
+.dossier-stack__file.is-selecting,
+.dossier-stack__file.is-pulling,
+.dossier-stack__file.is-pulled {
+  filter: brightness(1.06) saturate(1.08);
+}
+
+.dossier-stack__file.is-selecting .dossier-stack__sheet,
+.dossier-stack__file.is-pulling .dossier-stack__sheet,
+.dossier-stack__file.is-pulled .dossier-stack__sheet {
+  box-shadow:
+    var(--dossier-pulled-shadow),
+    0 0 0 1px color-mix(in srgb, var(--dossier-accent) 22%, transparent);
+}
+
+.dossier-stack__file.is-selecting,
+.dossier-stack__file.is-selecting .dossier-stack__sheet,
+.dossier-stack__file.is-selecting .dossier-stack__tab {
+  transition-duration: 0ms;
+}
+
+.dossier-stack__file.is-active.is-pulled,
+.dossier-stack__file.is-active.is-pulled .dossier-stack__sheet,
+.dossier-stack__file.is-active.is-pulled .dossier-stack__tab {
+  transition-duration: 0ms;
+}
+
+.dossier-stack__file.is-handoff,
+.dossier-stack__file.is-handoff .dossier-stack__sheet,
+.dossier-stack__file.is-handoff .dossier-stack__tab {
+  transition-duration: 0ms;
+}
+
+.dossier-stack__file.is-returning {
+  transition-duration: var(--dossier-motion-return-duration);
+}
+
+.dossier-stack__file.is-returning .dossier-stack__sheet,
+.dossier-stack__file.is-returning .dossier-stack__tab {
+  transition-duration: var(--dossier-motion-return-duration);
+}
+
+.dossier-stack__content {
+  position: relative;
+  z-index: 1;
+  inline-size: 100%;
+  min-inline-size: 0;
+  color: var(--dossier-ink);
+}
+
+.dossier-stack__content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--dossier-paper-texture);
+  background-blend-mode: var(--dossier-paper-blend-mode);
+  background-size: var(--dossier-paper-texture-size);
+  filter: var(--dossier-paper-filter);
+  mix-blend-mode: var(--dossier-paper-composite-mode);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.dossier-stack--texture-paper.dossier-stack--texture-layer-content .dossier-stack__content::before {
+  opacity: var(--dossier-paper-content-opacity);
+}
+
+.dossier-stack--texture-paper.dossier-stack--texture-layer-content .dossier-stack__content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dossier-stack--edge-top {
+  padding-block-start: calc(var(--dossier-attached-tab-cross-size) + var(--dossier-attached-tab-gap));
+}
+
+.dossier-stack--edge-bottom {
+  padding-block-end: calc(var(--dossier-attached-tab-cross-size) + var(--dossier-attached-tab-gap));
+}
+
+.dossier-stack--edge-left {
+  padding-inline-start: var(--dossier-side-tab-outset);
+  padding-inline-end: var(--dossier-side-stack-reveal);
+  overflow-x: visible;
+}
+
+.dossier-stack--edge-right {
+  --dt-label-rotation: 90deg;
+
+  padding-inline-start: var(--dossier-side-stack-reveal);
+  padding-inline-end: var(--dossier-side-tab-outset);
+  overflow-x: visible;
+}
+
+.dossier-stack--mixed-edge.dossier-stack--has-edge-top {
+  padding-block-start: calc(var(--dossier-attached-tab-cross-size) + var(--dossier-attached-tab-gap));
+}
+
+.dossier-stack--mixed-edge.dossier-stack--has-edge-bottom {
+  padding-block-end: calc(var(--dossier-attached-tab-cross-size) + var(--dossier-attached-tab-gap));
+}
+
+.dossier-stack--mixed-edge.dossier-stack--has-edge-left {
+  padding-inline-start: var(--dossier-side-tab-outset);
+  padding-inline-end: var(--dossier-side-stack-reveal);
+  overflow-x: visible;
+}
+
+.dossier-stack--mixed-edge.dossier-stack--has-edge-right {
+  padding-inline-start: var(--dossier-side-stack-reveal);
+  padding-inline-end: var(--dossier-side-tab-outset);
+  overflow-x: visible;
+}
+
+.dossier-stack--mixed-edge.dossier-stack--has-edge-left.dossier-stack--has-edge-right {
+  padding-inline-start: var(--dossier-side-tab-outset);
+  padding-inline-end: var(--dossier-side-tab-outset);
+}
+
+.dossier-stack--edge-left .dossier-stack__file.is-active .dossier-stack__sheet {
+  border-inline-start-color: transparent;
+}
+
+.dossier-stack--edge-right .dossier-stack__file.is-active .dossier-stack__sheet {
+  border-inline-end-color: transparent;
+}
+
+.dossier-stack__file--edge-left {
+  --dt-label-rotation: -90deg;
+
+  transform-origin: 0% 50%;
+}
+
+.dossier-stack__file--edge-right {
+  --dt-label-rotation: 90deg;
+
+  transform-origin: 100% 50%;
+}
+
+.dossier-stack__file--edge-top {
+  transform-origin: 50% 0%;
+}
+
+.dossier-stack__file--edge-bottom {
+  transform-origin: 50% 100%;
+}
+
+.dossier-stack--mixed-edge .dossier-stack__file--edge-left.is-active .dossier-stack__sheet {
+  border-inline-start-color: transparent;
+}
+
+.dossier-stack--mixed-edge .dossier-stack__file--edge-right.is-active .dossier-stack__sheet {
+  border-inline-end-color: transparent;
+}
+
+.dossier-stack__tab {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dossier-attached-tab-border);
+  background:
+    radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--dossier-tint) 18%, transparent), transparent 6.5rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 48%),
+    var(--dossier-attached-tab-surface);
+  color: var(--dt-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--dt-label-size);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  overflow: hidden;
+  padding: var(--dossier-attached-tab-padding);
+  text-align: start;
+  transform: translate3d(var(--dossier-index-transform-x), var(--dossier-index-transform-y), 0px) rotate(var(--dossier-index-rotate));
+  white-space: nowrap;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 180ms ease,
+    color 160ms ease,
+    filter 160ms ease,
+    block-size var(--dossier-motion-duration) var(--dossier-motion-ease),
+    height var(--dossier-motion-duration) var(--dossier-motion-ease),
+    inset-block-end var(--dossier-motion-duration) var(--dossier-motion-ease),
+    inset-block-start var(--dossier-motion-duration) var(--dossier-motion-ease),
+    inset-inline-end var(--dossier-motion-duration) var(--dossier-motion-ease),
+    inset-inline-start var(--dossier-motion-duration) var(--dossier-motion-ease),
+    inline-size var(--dossier-motion-duration) var(--dossier-motion-ease),
+    width var(--dossier-motion-duration) var(--dossier-motion-ease),
+    transform var(--dossier-motion-duration) var(--dossier-motion-ease);
+}
+
+.dossier-stack__tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-image: var(--dossier-paper-texture);
+  background-blend-mode: var(--dossier-paper-blend-mode);
+  background-size: var(--dossier-paper-texture-size);
+  filter: var(--dossier-paper-filter);
+  mix-blend-mode: var(--dossier-paper-composite-mode);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.dossier-stack--texture-paper.dossier-stack--texture-layer-tab .dossier-stack__tab::before {
+  opacity: var(--dossier-paper-tab-opacity);
+}
+
+.dossier-stack__tab:hover,
+.dossier-stack__tab:focus-visible,
+.dossier-stack__tab.is-active,
+.dossier-stack__tab.is-expanded,
+.dossier-stack__tab.is-hovered,
+.dossier-stack__tab.is-open {
+  border-color: var(--dossier-attached-tab-border-active);
+  background:
+    radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--dossier-tint) 28%, transparent), transparent 7.5rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), transparent 48%),
+    var(--dossier-attached-tab-surface-active);
+  color: var(--dt-text);
+}
+
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab,
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab:hover,
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab:focus-visible,
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab.is-active,
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab.is-expanded,
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab.is-hovered,
+.dossier-stack--stack-rotation-pieces .dossier-stack__tab.is-open {
+  border-color: transparent;
+}
+
+.dossier-stack__tab:focus-visible {
+  outline: 2px solid var(--dt-focus);
+  outline-offset: 3px;
+}
+
+.dossier-stack__tab.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.dossier-stack__tab-icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.dossier-stack__tab-icon {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  color: currentColor;
+  opacity: 0.8;
+}
+
+.dossier-stack__tab-icon > svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.dossier-stack__tab-label,
+.dossier-stack__tab-count,
+.dossier-stack__tab-lock {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dossier-stack__tab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dossier-stack__tab-count {
+  color: var(--dossier-ink-muted);
+  font-family: ui-monospace, "SFMono-Regular", "SF Mono", Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.dossier-stack__tab-lock {
+  min-inline-size: 1rem;
+  white-space: nowrap;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab {
+  width: var(--dossier-attached-tab-compact-size);
+  height: var(--dossier-attached-tab-reach-size);
+  inline-size: var(--dossier-attached-tab-compact-size);
+  block-size: var(--dossier-attached-tab-reach-size);
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab {
+  width: var(--dossier-attached-tab-reach-size);
+  height: var(--dossier-attached-tab-compact-size);
+  inline-size: var(--dossier-attached-tab-reach-size);
+  block-size: var(--dossier-attached-tab-compact-size);
+}
+
+.dossier-stack__file--edge-top .dossier-stack__tab,
+.dossier-stack__file--edge-bottom .dossier-stack__tab,
+.dossier-stack__file--edge-left .dossier-stack__tab,
+.dossier-stack__file--edge-right .dossier-stack__tab {
+  inset: auto;
+  border-block-start-width: 1px;
+  border-block-end-width: 1px;
+  border-inline-start-width: 1px;
+  border-inline-end-width: 1px;
+  margin: 0;
+  box-shadow: none;
+}
+
+.dossier-stack__file--edge-top .dossier-stack__tab {
+  inset-block-end: 100%;
+  inset-inline-start: calc(var(--dossier-index-slot) - var(--dossier-stack-border-width));
+  border-block-end-width: 0;
+  border-radius: var(--dossier-attached-tab-radius) var(--dossier-attached-tab-radius) 0 0;
+  margin-block-end: -1px;
+}
+
+.dossier-stack__file--edge-bottom .dossier-stack__tab {
+  inset-block-start: 100%;
+  inset-inline-start: calc(var(--dossier-index-slot) - var(--dossier-stack-border-width));
+  border-block-start-width: 0;
+  border-radius: 0 0 var(--dossier-attached-tab-radius) var(--dossier-attached-tab-radius);
+  margin-block-start: -1px;
+}
+
+.dossier-stack__file--edge-left .dossier-stack__tab {
+  inset-block-start: calc(var(--dossier-index-slot) - var(--dossier-stack-border-width));
+  inset-inline-end: 100%;
+  border-inline-end-width: 0;
+  border-radius: var(--dossier-attached-tab-radius) 0 0 var(--dossier-attached-tab-radius);
+  margin-inline-end: -1px;
+}
+
+.dossier-stack__file--edge-right .dossier-stack__tab {
+  inset-block-start: calc(var(--dossier-index-slot) - var(--dossier-stack-border-width));
+  inset-inline-start: 100%;
+  border-inline-start-width: 0;
+  border-radius: 0 var(--dossier-attached-tab-radius) var(--dossier-attached-tab-radius) 0;
+  margin-inline-start: -1px;
+}
+
+.dossier-stack__file--edge-top.dossier-stack__file--gravity-center .dossier-stack__tab,
+.dossier-stack__file--edge-bottom.dossier-stack__file--gravity-center .dossier-stack__tab {
+  inset-inline-start: calc(50% - (var(--dossier-index-group-size) / 2) + var(--dossier-index-slot) - var(--dossier-stack-border-width));
+}
+
+.dossier-stack__file--edge-top.dossier-stack__file--gravity-end .dossier-stack__tab,
+.dossier-stack__file--edge-bottom.dossier-stack__file--gravity-end .dossier-stack__tab {
+  inset-inline-start: auto;
+  inset-inline-end: calc(var(--dossier-index-slot) - var(--dossier-stack-border-width));
+}
+
+.dossier-stack__file--edge-left.dossier-stack__file--gravity-center .dossier-stack__tab,
+.dossier-stack__file--edge-right.dossier-stack__file--gravity-center .dossier-stack__tab {
+  inset-block-start: calc(50% - (var(--dossier-index-group-size) / 2) + var(--dossier-index-slot) - var(--dossier-stack-border-width));
+}
+
+.dossier-stack__file--edge-left.dossier-stack__file--gravity-end .dossier-stack__tab,
+.dossier-stack__file--edge-right.dossier-stack__file--gravity-end .dossier-stack__tab {
+  inset-block-start: auto;
+  inset-block-end: calc(var(--dossier-index-slot) - var(--dossier-stack-border-width));
+}
+
+.dossier-stack__file--edge-top .dossier-stack__tab:not(.is-active):not(.is-open) {
+  border-block-end-width: 0;
+  box-shadow: 0 1px 0 var(--dossier-attached-tab-border);
+  margin-block-end: 0;
+}
+
+.dossier-stack__file--edge-bottom .dossier-stack__tab:not(.is-active):not(.is-open) {
+  border-block-start-width: 0;
+  box-shadow: 0 -1px 0 var(--dossier-attached-tab-border);
+  margin-block-start: 0;
+}
+
+.dossier-stack__file--edge-left .dossier-stack__tab:not(.is-active):not(.is-open) {
+  border-inline-end-width: 0;
+  margin-inline-end: 0;
+}
+
+.dossier-stack__file--edge-right .dossier-stack__tab:not(.is-active):not(.is-open) {
+  border-inline-start-width: 0;
+  margin-inline-start: 0;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab.is-open,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-expanded,
+.dossier-stack--expand-always .dossier-stack__file--horizontal .dossier-stack__tab {
+  width: var(--dossier-attached-tab-open-size);
+  height: var(--dossier-attached-tab-reach-size);
+  inline-size: var(--dossier-attached-tab-open-size);
+  block-size: var(--dossier-attached-tab-reach-size);
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab.is-open,
+.dossier-stack__file--vertical .dossier-stack__tab.is-expanded,
+.dossier-stack--expand-always .dossier-stack__file--vertical .dossier-stack__tab {
+  width: var(--dossier-attached-tab-reach-size);
+  height: var(--dossier-attached-tab-open-size);
+  inline-size: var(--dossier-attached-tab-reach-size);
+  block-size: var(--dossier-attached-tab-open-size);
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab-icon {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  transition: inset-inline-start 180ms ease, opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab-label {
+  inset-block-start: 50%;
+  inset-inline-start: 2.45rem;
+  max-inline-size: calc(var(--dossier-attached-tab-open-size) - 5.5rem);
+  transform: translateY(-50%) translateX(-0.2rem);
+  transition: opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab-count,
+.dossier-stack__file--horizontal .dossier-stack__tab-lock {
+  inset-block-start: 50%;
+  transform: translateY(-50%) translateX(0.2rem);
+  transition: opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab-count {
+  inset-inline-end: 0.75rem;
+  min-inline-size: 1.35rem;
+  text-align: end;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab-lock {
+  inset-inline-end: 0.75rem;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab--has-total .dossier-stack__tab-label {
+  max-inline-size: calc(var(--dossier-attached-tab-open-size) - 7.6rem);
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab--has-total .dossier-stack__tab-count {
+  inset-inline-end: 2.85rem;
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab.is-open .dossier-stack__tab-icon,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-expanded .dossier-stack__tab-icon,
+.dossier-stack--expand-always .dossier-stack__file--horizontal .dossier-stack__tab .dossier-stack__tab-icon {
+  inset-inline-start: 0.75rem;
+  opacity: 0.96;
+  transform: translateY(-50%);
+}
+
+.dossier-stack__file--horizontal .dossier-stack__tab.is-open .dossier-stack__tab-label,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-open .dossier-stack__tab-count,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-open .dossier-stack__tab-lock,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-expanded .dossier-stack__tab-label,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-expanded .dossier-stack__tab-count,
+.dossier-stack__file--horizontal .dossier-stack__tab.is-expanded .dossier-stack__tab-lock,
+.dossier-stack--expand-always .dossier-stack__file--horizontal .dossier-stack__tab .dossier-stack__tab-label,
+.dossier-stack--expand-always .dossier-stack__file--horizontal .dossier-stack__tab .dossier-stack__tab-count,
+.dossier-stack--expand-always .dossier-stack__file--horizontal .dossier-stack__tab .dossier-stack__tab-lock {
+  opacity: 1;
+  transform: translateY(-50%);
+  visibility: visible;
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab-icon {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  transition: inset-block-start 180ms ease, opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab-label {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  max-inline-size: var(--dossier-attached-tab-vertical-label-size);
+  transform: translate(-50%, -50%) rotate(var(--dt-label-rotation));
+  transform-origin: center;
+  transition: opacity 160ms ease;
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab-count {
+  inset-block-start: auto;
+  inset-block-end: var(--dossier-attached-tab-vertical-count-offset);
+  inset-inline-start: 50%;
+  inset-inline-end: auto;
+  min-inline-size: 1.35rem;
+  text-align: center;
+  transform: translateX(-50%) translateY(0.2rem);
+  transition: opacity 160ms ease, transform 180ms ease;
+}
+
+.dossier-stack__file--edge-top .dossier-stack__tab-icon,
+.dossier-stack__file--edge-top .dossier-stack__tab-label,
+.dossier-stack__file--edge-top .dossier-stack__tab-count,
+.dossier-stack__file--edge-top .dossier-stack__tab-lock {
+  inset-block-start: calc(var(--dossier-attached-tab-grab-size) / 2);
+}
+
+.dossier-stack__file--edge-bottom .dossier-stack__tab-icon,
+.dossier-stack__file--edge-bottom .dossier-stack__tab-label,
+.dossier-stack__file--edge-bottom .dossier-stack__tab-count,
+.dossier-stack__file--edge-bottom .dossier-stack__tab-lock {
+  inset-block-start: calc(var(--dossier-attached-tab-reach-size) - (var(--dossier-attached-tab-grab-size) / 2));
+}
+
+.dossier-stack__file--edge-left .dossier-stack__tab-icon,
+.dossier-stack__file--edge-left .dossier-stack__tab-label,
+.dossier-stack__file--edge-left .dossier-stack__tab-count {
+  inset-inline-start: calc(var(--dossier-attached-tab-grab-size) / 2);
+}
+
+.dossier-stack__file--edge-right .dossier-stack__tab-icon,
+.dossier-stack__file--edge-right .dossier-stack__tab-label,
+.dossier-stack__file--edge-right .dossier-stack__tab-count {
+  inset-inline-start: calc(var(--dossier-attached-tab-reach-size) - (var(--dossier-attached-tab-grab-size) / 2));
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab.is-open .dossier-stack__tab-icon,
+.dossier-stack__file--vertical .dossier-stack__tab.is-expanded .dossier-stack__tab-icon,
+.dossier-stack--expand-always .dossier-stack__file--vertical .dossier-stack__tab .dossier-stack__tab-icon {
+  inset-block-start: var(--dossier-attached-tab-vertical-icon-offset);
+  opacity: 0.96;
+  transform: translateX(-50%);
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab.is-open .dossier-stack__tab-label,
+.dossier-stack__file--vertical .dossier-stack__tab.is-open .dossier-stack__tab-count,
+.dossier-stack__file--vertical .dossier-stack__tab.is-expanded .dossier-stack__tab-label,
+.dossier-stack__file--vertical .dossier-stack__tab.is-expanded .dossier-stack__tab-count,
+.dossier-stack--expand-always .dossier-stack__file--vertical .dossier-stack__tab .dossier-stack__tab-label,
+.dossier-stack--expand-always .dossier-stack__file--vertical .dossier-stack__tab .dossier-stack__tab-count {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dossier-stack__file--vertical .dossier-stack__tab.is-open .dossier-stack__tab-count,
+.dossier-stack__file--vertical .dossier-stack__tab.is-expanded .dossier-stack__tab-count,
+.dossier-stack--expand-always .dossier-stack__file--vertical .dossier-stack__tab .dossier-stack__tab-count {
+  transform: translateX(-50%);
+}
+
+.dossier-stack__measurer {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: -1;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0;
+  max-inline-size: none;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.dossier-stack__measure-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  inline-size: auto;
+  min-inline-size: var(--dossier-attached-tab-cross-size);
+  block-size: var(--dossier-attached-tab-cross-size);
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: var(--dt-label-size);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dossier-stack__measure-tab .dossier-stack__tab-icon,
+.dossier-stack__measure-tab .dossier-stack__tab-label,
+.dossier-stack__measure-tab .dossier-stack__tab-count,
+.dossier-stack__measure-tab .dossier-stack__tab-lock {
+  position: static;
+  opacity: 1;
+  transform: none;
+}
+
+.dossier-stack__measure-tab--compact {
+  inline-size: var(--dossier-attached-tab-cross-size);
+  padding: 0.5rem;
+}
+
+.dossier-stack__measure-tab--compact .dossier-stack__tab-icon {
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dossier-tray::before,
+  .dossier-tray::after,
+  .dossier-file-stack::before,
+  .dossier-file-stack::after {
+    transition:
+      opacity var(--dossier-motion-duration) ease,
+      transform var(--dossier-motion-duration) var(--dossier-motion-ease);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dossier,
+  .dossier-tray,
+  .dossier-tray::before,
+  .dossier-tray::after,
+  .dossier-file-stack,
+  .dossier-file-stack::before,
+  .dossier-file-stack::after,
+  .dossier-stack__file,
+  .dossier-stack__sheet,
+  .dossier-stack__tab,
+  .dossier-stack__tab-icon,
+  .dossier-stack__tab-label,
+  .dossier-stack__tab-count,
+  .dossier-stack__tab-lock {
+    transition: none !important;
+  }
+
+  .dossier,
+  .dossier-tray,
+  .dossier-tray::before,
+  .dossier-tray::after,
+  .dossier-file-stack,
+  .dossier-file-stack::before,
+  .dossier-file-stack::after,
+  .dossier-stack__file,
+  .dossier-stack__sheet,
+  .dossier-stack__tab,
+  .dossier-stack__tab-icon,
+  .dossier-stack__tab-label,
+  .dossier-stack__tab-count,
+  .dossier-stack__tab-lock {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .dossier-tray,
+  .dossier-file-stack {
+    --dossier-layer-one-x: 0rem;
+    --dossier-layer-one-y: 0.38rem;
+    --dossier-layer-two-x: 0rem;
+    --dossier-layer-two-y: 0.68rem;
+  }
+
+  .dossier-tray--edge-left,
+  .dossier-file-stack--edge-left {
+    --dossier-layer-one-x: 0.42rem;
+    --dossier-layer-one-y: 0rem;
+    --dossier-layer-two-x: 0.72rem;
+    --dossier-layer-two-y: 0rem;
+  }
+
+  .dossier-tray--edge-right,
+  .dossier-file-stack--edge-right {
+    --dossier-layer-one-x: -0.42rem;
+    --dossier-layer-one-y: 0rem;
+    --dossier-layer-two-x: -0.72rem;
+    --dossier-layer-two-y: 0rem;
+  }
+
+  .dossier-tray--edge-bottom,
+  .dossier-file-stack--edge-bottom {
+    --dossier-layer-one-x: 0rem;
+    --dossier-layer-one-y: -0.38rem;
+    --dossier-layer-two-x: 0rem;
+    --dossier-layer-two-y: -0.68rem;
+  }
+}
