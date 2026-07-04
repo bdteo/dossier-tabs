@@ -769,7 +769,7 @@ function normalizeDemoTextureLayerMode(value: string | null): DossierSurfaceText
       <DossierStack
         v-model="primaryActive"
         class="demo-stage demo-stage--primary"
-        dossier-class="demo-dossier demo-dossier--primary"
+        file-class="demo-dossier demo-dossier--primary"
         :tabs="primaryTabs"
         ariaLabel="Case tray sections"
         orientation="horizontal"
@@ -875,7 +875,7 @@ function normalizeDemoTextureLayerMode(value: string | null): DossierSurfaceText
         <DossierStack
           v-model="workbenchActive"
           class="demo-stage demo-stage--workbench"
-          dossier-class="demo-dossier demo-dossier--media"
+          file-class="demo-dossier demo-dossier--media"
           :tabs="workbenchTabs"
           ariaLabel="Four-edge media tray sections"
           orientation="horizontal"

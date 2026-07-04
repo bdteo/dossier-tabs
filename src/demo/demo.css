@@ -67,10 +67,9 @@ select {
 .demo-showcase h1 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(4.2rem, 8vw, 8.6rem);
+  font-size: clamp(3.4rem, 7vw, 6.5rem);
   font-weight: 500;
   line-height: 0.94;
-  overflow-wrap: anywhere;
 }
 
 .demo-lede {
@@ -421,6 +420,7 @@ select {
 }
 
 .demo-dossier--media {
+  display: grid;
   min-block-size: clamp(28rem, 48vw, 40rem);
   padding: clamp(1.35rem, 4vw, 3rem);
   background:
@@ -602,7 +602,12 @@ select {
   }
 
   .demo-showcase h1 {
-    font-size: clamp(3.4rem, 17vw, 5.2rem);
+    font-size: clamp(3rem, 15vw, 5.2rem);
+  }
+
+  .demo-workbench {
+    margin-block-start: 2.5rem;
+    padding-block-start: 1.5rem;
   }
 
   .demo-dossier--primary,
